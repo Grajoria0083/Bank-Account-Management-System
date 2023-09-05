@@ -1,0 +1,72 @@
+
+|
+java:S1192d"aDefine a constant instead of duplicating this literal "Invalid Account Number Exception" 6 times.(ºÎŞ¦üÿÿÿÿ
+u
+java:S1192‘"YDefine a constant instead of duplicating this literal "Invalid Amount Exception" 3 times.(Ö÷ÿêúÿÿÿÿ
+v
+java:S1192g"`Define a constant instead of duplicating this literal "Invalid athontication Exception" 3 times.(äã„ü
+k
+java:S1192]"UDefine a constant instead of duplicating this literal "Enter Account Number" 4 times.(ìƒô”
+d
+java:S1192‰"MDefine a constant instead of duplicating this literal "Enter Amount" 3 times.(¹æÓ§
+z
+java:S1319Y"dThe type of "hashMap" should be an interface such as "Map" rather than the implementation "HashMap".(Ë§æ
+z
+java:S1319n"dThe type of "hashMap" should be an interface such as "Map" rather than the implementation "HashMap".(´÷®ì
+€
+java:S1319ƒ"dThe type of "hashMap" should be an interface such as "Map" rather than the implementation "HashMap".(½æ¯Ğÿÿÿÿÿ
+€
+java:S1319–"dThe type of "hashMap" should be an interface such as "Map" rather than the implementation "HashMap".(—áÑ÷üÿÿÿÿ
+€
+java:S1319²"dThe type of "hashMap" should be an interface such as "Map" rather than the implementation "HashMap".(·…ëıÿÿÿÿ
+{
+java:S1319Û"dThe type of "hashMap" should be an interface such as "Map" rather than the implementation "HashMap".(Ö ğ
+{
+java:S1488Ş"_Immediately return this expression instead of assigning it to the temporary variable "account".(ÈÔ„°şÿÿÿÿ
+T
+java:S1854"9Remove this useless assignment to local variable "email".(”†µ–ÿÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(¾±”û
+E	java:S106"+Replace this use of System.out by a logger.(›É¢şÿÿÿÿ
+E
+java:S1481"*Remove this unused "email" local variable.(”†µ–ÿÿÿÿÿ
+E	java:S106"+Replace this use of System.out by a logger.(‹Î›şÿÿÿÿ
+9
+java:S6396 "#Remove this unnecessary quantifier.(«§Œ‚
+R
+java:S6353 "<Use concise character class syntax '\\d' instead of '[0-9]'.(«§Œ‚
+@	java:S106$"+Replace this use of System.out by a logger.(ÉƒšÒ
+E	java:S106'"+Replace this use of System.out by a logger.(”Ïùşÿÿÿÿ
+@	java:S106*"+Replace this use of System.out by a logger.(´½æè
+E	java:S106+"+Replace this use of System.out by a logger.(£¢…©øÿÿÿÿ
+@	java:S106,"+Replace this use of System.out by a logger.(ƒŠº
+E	java:S106-"+Replace this use of System.out by a logger.(ÒÖÕ³ıÿÿÿÿ
+E	java:S106="+Replace this use of System.out by a logger.(ıÆŒ¥øÿÿÿÿ
+E	java:S106>"+Replace this use of System.out by a logger.(áÔ‚Ùúÿÿÿÿ
+E	java:S106?"+Replace this use of System.out by a logger.(ÎÀõÔşÿÿÿÿ
+9
+java:S2119H"Save and re-use this "Random".(šŸ«íøÿÿÿÿ
+@	java:S106]"+Replace this use of System.out by a logger.(ìƒô”
+E	java:S106_"+Replace this use of System.out by a logger.(û…àÙøÿÿÿÿ
+@	java:S106r"+Replace this use of System.out by a logger.(ìƒô”
+E	java:S106t"+Replace this use of System.out by a logger.(Ú§Úşÿÿÿÿ
+A	java:S106‡"+Replace this use of System.out by a logger.(ìƒô”
+A	java:S106‰"+Replace this use of System.out by a logger.(¹æÓ§
+F
+java:S1905Œ"*Remove this unnecessary cast to "Account".(—®ıÿÿÿÿ
+A	java:S106š"+Replace this use of System.out by a logger.(ìƒô”
+F	java:S106œ"+Replace this use of System.out by a logger.(û…àÙøÿÿÿÿ
+A	java:S106"+Replace this use of System.out by a logger.(¹æÓ§
+F
+java:S1905¡"*Remove this unnecessary cast to "Account".(—®ıÿÿÿÿ
+2
+java:S3626É"Remove this redundant jump.(ûÁİ…
+F	java:S106¶"+Replace this use of System.out by a logger.(üê»§úÿÿÿÿ
+F	java:S106¸"+Replace this use of System.out by a logger.(ªø¡ğùÿÿÿÿ
+A	java:S106º"+Replace this use of System.out by a logger.(¹æÓ§
+A
+java:S1905½"*Remove this unnecessary cast to "Account".(ƒâÄÿ
+F
+java:S1905¾"*Remove this unnecessary cast to "Account".(›„ ²üÿÿÿÿ
+F	java:S106Ò"+Replace this use of System.out by a logger.(ÿû×Õúÿÿÿÿ
+F	java:S106Ó"+Replace this use of System.out by a logger.(•²Øßüÿÿÿÿ
+F	java:S106Ô"+Replace this use of System.out by a logger.(Û‹¥¦ûÿÿÿÿ

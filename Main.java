@@ -1,9 +1,5 @@
-import BankFactory.BankFactory;
-import BankUtil.BankUtil;
-import serviceImpl.HDFCBank;
-import serviceImpl.ICICIBank;
-import serviceImpl.SBIBank;
-import servise.Bank;
+import bank_util.BankUtil;
+import service.Bank;
 
 import java.util.Scanner;
 
@@ -48,7 +44,7 @@ public class Main {
                     break;
                 case 2:
                     try {
-                        bank.WithdrawAmount();
+                        bank.withdrawAmount();
                     }catch (RuntimeException re) {
                         System.out.println(re.getMessage());
                     }
@@ -97,7 +93,7 @@ public class Main {
                     break;
                 case 9:
                     try {
-                        bank.BankLunchTiming();
+                        bank.bankLunchTiming();
                     }catch (RuntimeException re) {
                         System.out.println(re.getMessage());
                     }
