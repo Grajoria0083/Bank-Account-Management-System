@@ -10,6 +10,8 @@ import servise.Bank;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BankUtil {
 
@@ -22,12 +24,21 @@ public class BankUtil {
 
         System.out.println("Enter name");
         String name = sc.next();
+//        if (Pattern.matches("[0-9]",name)){
+//            throw new UnauthorizedActionException("invalid name number");
+//        }
 
         System.out.println("Enter email");
         String email = sc.next();
+//        if (!Pattern.matches("[.gmail]",email)){
+//            throw new UnauthorizedActionException("invalid email number");
+//        }
 
         System.out.println("Enter phone number");
         String pn = sc.next();
+        if (!Pattern.matches("[789]{1}[0-9]{9}",pn)){
+            throw new UnauthorizedActionException("invalid Mobile number");
+        }
 
         System.out.println("Enter Address");
         String address = sc.next();
@@ -36,8 +47,8 @@ public class BankUtil {
         int pw = sc.nextInt();
 
         System.out.println("Select Branch");
-        System.out.println("0 Noida");
-        System.out.println("1 Delhi");
+        System.out.println("1 Noida");
+        System.out.println("2 Delhi");
         System.out.println("3 Gurgaon");
         int n = sc.nextInt();
 
@@ -51,6 +62,18 @@ public class BankUtil {
         else {
             account.setBranch("Gurgaon");
             account.setIfscCode(bankName.toUpperCase()+4345);
+        }
+
+
+        System.out.println("Select Account Type");
+        System.out.println("0 Saving");
+        System.out.println("1 Checking");
+        n = sc.nextInt();
+
+        if (n == 1) {
+            account.setAccountType("Saving");
+        } else{
+            account.setAccountType("Checking");
         }
 
         Random rand = new Random();
@@ -84,6 +107,27 @@ public class BankUtil {
             throw new AccountNotFoundException("Invalid Account Number Exception");
         }
         if (account.pin!=ps){
+            throw new UnauthorizedActionException("Invalid athontication Exception");
+        }
+        return account;
+    }
+
+
+
+    public Account checkACandPN(HashMap<Integer, Account> hashMap){
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter Account Number");
+        int ac = sc.nextInt();
+        System.out.println("Enter Phone Number");
+        String pn = sc.next();
+
+        Account account = hashMap.get(ac);
+        if (account==null){
+            throw new AccountNotFoundException("Invalid Account Number Exception");
+        }
+        if (!account.getPhoneNumber().equals(pn)){
             throw new UnauthorizedActionException("Invalid athontication Exception");
         }
         return account;
@@ -153,10 +197,10 @@ public class BankUtil {
         Account account2 = (Account) hashMap.get(ac2);
 
         if (account1==null){
-            throw new AccountNotFoundException("Invalid Account Number 1 Exception");
+            throw new AccountNotFoundException("Invalid Account Number Exception");
         }
         if (account2==null){
-            throw new AccountNotFoundException("Invalid Account Number 2 Exception");
+            throw new AccountNotFoundException("Invalid Account Number Exception");
         }
         if (amount>account1.getAmount()){
             throw new InvalidAmountException("Invalid Amount Exception");
@@ -177,6 +221,16 @@ public class BankUtil {
         int n = sc.nextInt();
         BankFactory bf = new BankFactory();
         return bf.getBank(n);
+    }
+
+    public Account checkAccountNumber(HashMap<Integer, Account>  hashMap, int ac){
+
+        try {
+            Account account = hashMap.get(ac);
+            return account;
+        }catch (RuntimeException re){
+            throw new AccountNotFoundException("Invalid Account Number");
+        }
     }
 
 

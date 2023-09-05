@@ -3,6 +3,10 @@ package model;
 public class Account extends User{
 
     int accountNumber;
+
+    String accountType;
+
+
     String bankName;
     String branch;
     String ifscCode;
@@ -65,6 +69,14 @@ public class Account extends User{
     }
 
 
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -72,8 +84,10 @@ public class Account extends User{
                 ", bankName='" + bankName + '\'' +
                 ", branch='" + branch + '\'' +
                 ", ifscCode='" + ifscCode + '\'' +
+                ", accountType='" + accountType + '\'' +
                 ", amount=" + amount +
                 ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", pin=" + pin +

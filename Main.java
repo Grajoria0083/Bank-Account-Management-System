@@ -32,6 +32,8 @@ public class Main {
             System.out.println("5 Transfer Fund in Different Bank");
             System.out.println("6 Show Last Transactions");
             System.out.println("7 Check Amount");
+            System.out.println("8 Requirement");
+            System.out.println("9 Lunch Timing");
 
             n = sc.nextInt();
 
@@ -82,6 +84,20 @@ public class Main {
                 case 7:
                     try {
                         bank.checkAmount();
+                    }catch (RuntimeException re) {
+                        System.out.println(re.getMessage());
+                    }
+                    break;
+                case 8:
+                    try {
+                        Bank.requirement();
+                    }catch (RuntimeException re) {
+                        System.out.println(re.getMessage());
+                    }
+                    break;
+                case 9:
+                    try {
+                        bank.BankLunchTiming();
                     }catch (RuntimeException re) {
                         System.out.println(re.getMessage());
                     }

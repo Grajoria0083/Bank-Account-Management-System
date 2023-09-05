@@ -1,6 +1,7 @@
 package serviceImpl;
 
 import BankException.AccountNotFoundException;
+import BankException.InsufficientFundsException;
 import BankException.InvalidAmountException;
 import BankException.UnauthorizedActionException;
 import BankUtil.BankUtil;
@@ -38,14 +39,43 @@ public class HDFCBank implements Bank {
     }
 
     @Override
+    public void joint() {
+
+        Account account;
+        System.out.println("1 Create new Account ");
+        System.out.println("2 Merge Account ");
+        if (sc.nextInt()==1){
+            account = bankUtil.createBank("HDFC");
+        }
+        else {
+            account = bankUtil.checkACandPN(hashMap);
+        }
+
+        System.out.println("Enter second Name");
+        account.setSecondName(sc.next());
+        hashMap.put(account.getAccountNumber(),account);
+        System.out.println(hashMap);
+
+    }
+
+    @Override
     public void createAccount() {
 
-        Account account = bankUtil.createBank("HDFC");
 
-        hashMap.put(account.getAccountNumber(),account);
+        System.out.println("1 Create Single Account ");
+        System.out.println("2 Create Joint ");
 
-        System.out.println(account);
-        System.out.println(hashMap);
+        if (sc.nextInt()==2){
+            this.joint();
+        }
+        else {
+            Account account = bankUtil.createBank("HDFC");
+
+            hashMap.put(account.getAccountNumber(), account);
+
+            System.out.println(account);
+            System.out.println(hashMap);
+        }
     }
 
     @Override
@@ -54,13 +84,13 @@ public class HDFCBank implements Bank {
 
         System.out.println("Enter Account Number");
         int ac = sc.nextInt();
-        System.out.println("Enter Amount");
-        long amount = sc.nextLong();
-
         Account account = hashMap.get(ac);
         if (account==null){
             throw new AccountNotFoundException("Invalid Account Number Exception");
         }
+
+        System.out.println("Enter Amount");
+        long amount = sc.nextLong();
         if (amount<1){
             throw new InvalidAmountException("Invalid Amount Exception");
         }
@@ -70,7 +100,7 @@ public class HDFCBank implements Bank {
         List<String> list = trasaction.get(ac);
         if (list==null){
             List<String> list1 = new ArrayList<>();
-            list1.add("dipositAmount: "+amount+ " on "+ LocalDateTime.now());
+            list1.add("dipositAmount: "+amount+ " on "+LocalDateTime.now());
             trasaction.put(ac, list1);
         }
         else {
@@ -86,18 +116,19 @@ public class HDFCBank implements Bank {
 
         System.out.println("Enter Account Number");
         int ac = sc.nextInt();
-        System.out.println("Enter Password");
-        int ps = sc.nextInt();
-        System.out.println("Enter Amount");
-        long amount = sc.nextLong();
-
         Account account = hashMap.get(ac);
         if (account==null){
             throw new AccountNotFoundException("Invalid Account Number Exception");
         }
+
+        System.out.println("Enter Password");
+        int ps = sc.nextInt();
         if (account.pin!=ps){
             throw new UnauthorizedActionException("Invalid athontication Exception");
         }
+
+        System.out.println("Enter Amount");
+        long amount = sc.nextLong();
         if (account.getAmount()<amount){
             throw new InvalidAmountException("Invalid Amount Exception");
         }
@@ -124,28 +155,27 @@ public class HDFCBank implements Bank {
 
         System.out.println("Enter Your Account Number");
         int ac1 = sc.nextInt();
+        Account account1 = hashMap.get(ac1);
+        if (account1==null){
+            throw new AccountNotFoundException("Invalid Account Number Exception");
+        }
+
         System.out.println("Enter Other Account Number");
         int ac2 = sc.nextInt();
+        Account account2 = hashMap.get(ac2);
+        if (account2==null){
+            throw new AccountNotFoundException("Invalid Account Number Exception");
+        }
+
         System.out.println("Enter Amount");
         long amount = sc.nextLong();
-
-        Account account1 = hashMap.get(ac1);
-        Account account2 = hashMap.get(ac2);
-
-        if (account1==null){
-            throw new AccountNotFoundException("Invalid Account Number 1 Exception");
-        }
-        if (account2==null){
-            throw new AccountNotFoundException("Invalid Account Number 2 Exception");
-        }
         if (amount>account1.getAmount()){
-            throw new InvalidAmountException("Invalid Amount Exception");
+            throw new InsufficientFundsException("In Sufficient Funds Exception");
         }
         account1.setAmount(account1.getAmount()-amount);
         account2.setAmount(account2.getAmount()+amount);
 
         System.out.println(amount+"rs Have Been Transfered Successfully");
-
 
         List<String> list = trasaction.get(ac1);
         if (list==null){
@@ -163,30 +193,30 @@ public class HDFCBank implements Bank {
     @Override
     public void transferFundInDiffBank() {
 
-
         System.out.println("Enter Your Account Number");
         int ac1 = sc.nextInt();
-
-        Bank bank = bankUtil.selectBank();
-        System.out.println("Enter Other Account Number");
-        int ac2 = sc.nextInt();
-        System.out.println("Enter Amount");
-        long amount = sc.nextLong();
-
         Account account1 = hashMap.get(ac1);
-
-        HashMap<Integer, Account> hashMap2 = bank.getHashMap();
-        Account account2 = hashMap2.get(ac2);
-
         if (account1==null){
             throw new AccountNotFoundException("Invalid Account Number 1 Exception");
         }
+
+        System.out.println("Select another Bank");
+        Bank bank = bankUtil.selectBank();
+        HashMap<Integer, Account> hashMap2 = bank.getHashMap();
+
+        System.out.println("Enter Other Account Number");
+        int ac2 = sc.nextInt();
+        Account account2 = hashMap2.get(ac2);
         if (account2==null){
             throw new AccountNotFoundException("Invalid Account Number 2 Exception");
         }
+
+        System.out.println("Enter Amount");
+        long amount = sc.nextLong();
         if (amount>account1.getAmount()){
-            throw new InvalidAmountException("Invalid Amount Exception");
+            throw new InsufficientFundsException("In Sufficient Funds Exception");
         }
+
         account1.setAmount(account1.getAmount()-amount);
         account2.setAmount(account2.getAmount()+amount);
 
@@ -217,11 +247,10 @@ public class HDFCBank implements Bank {
             list2.add("Transfer: "+amount+ " on "+LocalDateTime.now());
             trasaction2.put(ac2, list2);
         }
-
-
-
-
     }
+
+
+
 
     @Override
     public void showLastTransactions() throws RuntimeException{
@@ -245,5 +274,4 @@ public class HDFCBank implements Bank {
         System.out.println("Total Amount : "+account.getAmount());
 
     }
-
 }

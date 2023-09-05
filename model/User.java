@@ -3,8 +3,11 @@ package model;
 public class User {
 
     public String name;
+
+    public String secondName;
     public String address;
     public String phoneNumber;
+
     public Integer pin;
 
     public String getName() {
@@ -36,6 +39,18 @@ public class User {
     }
 
     public void setPin(int pin) {
+        this.pin = pin;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public void setPin(Integer pin) {
         this.pin = pin;
     }
 }
